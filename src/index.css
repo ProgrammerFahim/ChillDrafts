@@ -1,0 +1,382 @@
+:root {
+    --input-bg: #AAA;
+    --toolbar-bg: #1D2D44;
+    --experience-bg: #1D2D44;
+    --toolbar-option-dimension: 30px;
+    --toolbar-padding: 10px;
+    --toolbar-ledge: 20px;
+    --svg-color: #F0EBD8;
+    --active-option: #3E5C76;
+    --active-music: #3E5C76;
+    --toolbar-font-color: #EEEEEE;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+.home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10vh;
+}
+
+.home > h1 > span {
+    color: #777;
+}
+
+.home p {
+    width: 650px;
+    padding: 2em;
+    line-height: 1.3;
+    background: #CCC;
+    border-radius: 15px;
+}
+
+.home a {
+    text-decoration: none;
+    display: inline-block;
+    width: 110px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #051A9C;
+    color: white;
+}
+
+.home a:hover {
+    background: #051AC9;
+}
+
+svg {
+    fill: var(--svg-color);
+}
+
+body {
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+
+.editor-window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.editor-toolbar {
+    color: var(--toolbar-font-color);
+    position: absolute;
+    top: calc(-2*var(--toolbar-padding) - var(--toolbar-option-dimension));
+    margin-left: auto;
+    background: var(--toolbar-bg);
+    height: calc(2*var(--toolbar-padding) + var(--toolbar-ledge) + var(--toolbar-option-dimension));
+    display: inline-block;
+    padding-top: var(--toolbar-padding);
+    padding-left: var(--toolbar-padding);
+    padding-right: var(--toolbar-padding);
+    transition: top .2s;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.editor-toolbar:hover {
+    top: 0;
+}
+
+.toolbar-options-wrapper {
+    height: var(--toolbar-option-dimension);
+    display: flex;
+    gap: var(--toolbar-padding); 
+}
+
+.toolbar-option {
+    height: var(--toolbar-option-dimension);
+}
+
+.toolbar-binary-option {
+    width: var(--toolbar-option-dimension);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar-binary-option:hover {
+    box-shadow: 3px 3px 3px var(--active-option);
+}
+
+.toolbar-binary-option-active {
+    background: var(--active-option);
+}
+
+.toolbar-binary-option svg {
+    width: 70%;
+    height: 70%;
+}
+
+.underline svg {
+    width: 65% !important;
+    height: 65% !important;
+}
+
+.toolbar-font-size-toggle {
+    width: calc(2*var(--toolbar-option-dimension));
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.toolbar-font-size-toggle:hover {
+    box-shadow: 3px 3px 3px var(--active-option);
+}
+
+.toolbar-font-family-toggle {
+    width: calc(4*var(--toolbar-option-dimension));
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.toolbar-font-family-toggle:hover {
+    box-shadow: 3px 3px 3px var(--active-option);
+}
+
+.toolbar-font-size,
+.toolbar-font-size-icon {
+    display: inline-block;
+    width: var(--toolbar-option-dimension);
+    height: var(--toolbar-option-dimension);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar-font-family { width: calc(3*var(--toolbar-option-dimension)); }
+.toolbar-font-family-icon { width: var(--toolbar-option-dimension); }
+.toolbar-font-family,
+.toolbar-font-family-icon {
+    display: inline-block;
+    height: var(--toolbar-option-dimension);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar-font-size,
+.toolbar-font-family {
+    border: 2px solid var(--toolbar-bg);
+    background: var(--active-option);
+    border-radius: 5px;
+    cursor: default;
+}
+
+.toolbar-font-size p {
+    display: inline-block;
+}
+
+.toolbar-font-family p {
+    display: inline-block;
+    width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.toolbar-font-size-icon svg,
+.toolbar-font-family-icon svg {
+    width: 50%;
+    height: 50%;
+}
+
+.font-size-dropdown,
+.font-family-dropdown {
+    color: black;
+}
+
+.font-size-dropdown {
+    display: inline-block;
+    width: calc(2*var(--toolbar-option-dimension));
+    background: white;
+    position: absolute;
+    top: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    left: 0;
+}
+
+.font-family-dropdown {
+    display: inline-block;
+    width: calc(4*var(--toolbar-option-dimension));
+    background: white;
+    position: absolute;
+    top: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    left: 0;
+}
+
+.font-size-option {
+    width: 100%;
+    height: var(--toolbar-option-dimension);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.font-family-option {
+    width: 100%;
+    height: var(--toolbar-option-dimension);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.font-size {
+    display: inline-block;
+}
+
+.font-family {
+    display: inline-block;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.editor-input {
+    width: 75%;
+    max-width: 1200px;
+    height: 65%;
+    max-height: 1200px;
+    background: rgba(255, 255, 255, 0.87); 
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: text;
+    font-family: 'Times New Roman';
+}
+
+.experience {
+    --option-size: 40px;
+    --option-margin: 10px;
+    --audio-control-ledge: 25px;
+    width: calc(2*var(--option-size) + 4*var(--option-margin) + var(--audio-control-ledge));
+    height: calc(5*var(--option-size) + 6*var(--option-margin));
+    background: var(--experience-bg);
+    position: absolute;
+
+    top: calc(50vh - 2.5*var(--option-size) - 3*var(--option-margin));
+    left: calc(-2*var(--option-size) - 4*var(--option-margin));
+
+    transition: left .4s;
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.experience:hover {
+    left: 0;
+}
+
+.audio-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    gap: 0;
+    grid-template-rows: calc(var(--option-size) + 2*var(--option-margin)) calc(4*var(--option-size) + 4*var(--option-margin));
+    grid-template-columns: repeat(2, calc(var(--option-size) + 2*var(--option-margin)));
+}
+
+.volume-control {
+    position: relative;
+    grid-row: 1 / 3;
+    grid-column: 1 / 2;
+}
+
+.volume-control-input {
+    width: calc(5*var(--option-size) + 6*var(--option-margin));
+    height: var(--option-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: rotate(270deg);
+    transform-origin: top left;
+    top: 100%;
+    left: var(--option-margin);
+}
+
+.volume-control-input input {
+    width: 80%;
+}
+
+.play-pause-control {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+
+    width: var(--option-size);
+    height: var(--option-size);
+    border-radius: 15px;
+    margin-top: var(--option-margin);
+    margin-left: var(--option-margin);
+    margin-bottom: var(--option-margin);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-pause-control:hover {
+    background: var(--active-music);
+}
+
+.play-pause-control svg {
+    width: 50%;
+    height: 50%;
+}
+
+.choose-song-control {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: var(--option-margin);
+    margin-bottom: var(--option-margin);
+}
+
+.song-choice {
+    width: var(--option-size);
+    height: var(--option-size);
+    border-radius: 5px;
+    position: relative;
+    margin-left: var(--option-margin);
+}
+
+.song-choice div {
+    width: 100%;
+    height: 100%;
+}
+
+.song-selected {
+    background: var(--active-music);
+}
